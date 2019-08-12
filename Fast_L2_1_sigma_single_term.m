@@ -30,6 +30,8 @@ classdef Fast_L2_1_sigma_single_term
         ws
         Ai
         Bi
+        fun
+        saveBi
         c
         lambda_n
         sigma
@@ -61,6 +63,7 @@ classdef Fast_L2_1_sigma_single_term
             obj.u_hist = zeros(len, length(tmpws));
             sga = alp/2;
             obj.sigma = sga;
+            obj.fun = @(sii, c, d, s)(2*s - c).*exp(-sii.*(d - s));
         end
         
         function [obj, ret] = update(obj, n, u_n_minus_one)
@@ -71,6 +74,7 @@ classdef Fast_L2_1_sigma_single_term
             end
             obj.up = u_n_minus_one(:);
             
+            % tn_sigma = obj.sigma*obj.t(obj.n) + (1-obj.sigma)*obj.t(obj.n+1);
             obj.lambda_n = (1-obj.sigma)^(1-obj.alpha)/...
                 (obj.tau(n)^obj.alpha*gamma(2-obj.alpha));
             if n > 1
@@ -81,15 +85,22 @@ classdef Fast_L2_1_sigma_single_term
                     obj.xs*obj.tau(n-1)*(2+obj.tau(n)/obj.tau(n-1)))...
                     - 2 - obj.tau(n)/obj.tau(n-1)*obj.xs*obj.tau(n-1))./...
                     (obj.xs.^2*obj.tau(n-1)*(obj.tau(n) + obj.tau(n-1)));
+               % Ai_ = - arrayfun(@(x)quadgk(@(s)obj.fun(x, obj.t(n+1) + obj.t(n),tn_sigma, s),...
+               %      obj.t(n-1), obj.t(n)), obj.xs)/((obj.tau(n)+obj.tau(n-1))*obj.tau(n-1));
                 obj.Bi = exp(-obj.xs*(1-obj.sigma)*obj.tau(n)).* ...
                     (exp(-obj.xs*obj.tau(n-1)).*(2 + ...
                     obj.xs*obj.tau(n-1)) - 2 + obj.xs*obj.tau(n-1))./...
-                    (obj.xs.^2*obj.tau(n-1)*(obj.tau(n) + obj.tau(n-1)));
-            
-            
-                tmp = obj.up * obj.Bi'; % V^n = u_hist + tmp
+                    (obj.xs.^2*obj.tau(n)*(obj.tau(n) + obj.tau(n-1)));
+               % Bi_ = arrayfun(@(x)quadgk(@(s)obj.fun(x, obj.t(n-1) + obj.t(n),tn_sigma, s),...
+               %      obj.t(n-1), obj.t(n)), obj.xs)/((obj.tau(n)+obj.tau(n-1))*obj.tau(n));
+                if n == 2
+                    obj.saveBi = zeros(size(obj.Bi));
+                end
+                tmp = obj.up * obj.saveBi'; % V^n = u_hist + tmp
+                tmp2 = obj.up * obj.Bi'; % V^n = u_hist + tmp
                 obj.u_hist = (obj.u_hist + tmp).* obj.c' ...
-                             + (obj.up - obj.upp) * obj.Ai' - tmp;
+                             + (obj.up - obj.upp) * obj.Ai' - tmp2;
+                obj.saveBi = obj.Bi;
             end
             
             ret = obj.u_hist * obj.ws - obj.lambda_n*obj.up;
