@@ -52,8 +52,7 @@ These formulas have same input parameters `qformula`, `t_array`, `u0`, `tol`.
 + `tol`: This parameter only used in fast algorithms. It is used to limit the error 
   of the SOE(sum-of-exponentials) approximation.
   
-This is an example to solve the equation $ D^\alpha_t u = f$, see file `example.m`. Also, you can find example in
-the fold `test`.
+This is an example to solve the equation $ D^\alpha_t u = f$, see file `example.m`. 
 ```  matlab
 % solve equation  D^\alpha_t u = f
 
