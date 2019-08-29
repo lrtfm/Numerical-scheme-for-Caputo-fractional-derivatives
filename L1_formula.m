@@ -90,8 +90,8 @@ classdef L1_formula
             wc = obj.w'*c;
             obj.wn = wc(end);
             new_wc = [-wc(1), -diff(wc)];
-            ret = obj.up(:, 1:n)*new_wc';
-            obj.un_h = reshape(ret, obj.shape);
+            ret = reshape(obj.up(:, 1:n)*new_wc', obj.shape);
+            obj.un_h = ret;
         end
 
         function ret = get_t(obj)
