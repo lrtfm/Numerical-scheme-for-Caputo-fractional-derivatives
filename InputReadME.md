@@ -46,16 +46,16 @@
 These formulas have same input parameters `qformula`, `t_array`, `u0`, `tol`.
 + `qformula`: This is a structure with two fileds `alpha` and `w`, where `alpha`
   is(are) the fractional order, and `w` is(are) the weight of the fractional term.
-  It correspond to the term $ w D^alpha $ of the equation.
+  It corresponds to the term $ w D^\alpha_t $ of the equation.
 + `t_array`: This is the temporal mesh $(t_0, t_1, t_2, ..., t_N)$.
 + `u0`: This is the initial value, it can be any shape: scale or vector or matrix.
 + `tol`: This parameter only used in fast algorithms. It is used to limit the error 
-  of the SOE(sum of exponential function) approximation.
+  of the SOE(sum-of-exponentials) approximation.
   
-This is an example to solve the equation $ D^alpha u = f$, see file `example.m`. Also, you can find example in
+This is an example to solve the equation $ D^\alpha_t u = f$, see file `example.m`. Also, you can find example in
 the fold `test`.
 ```  matlab
-% solve equation  D^alpha u = f
+% solve equation  D^\alpha_t u = f
 
 alpha = 0.8;
 c = 3;

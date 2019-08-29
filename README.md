@@ -46,16 +46,16 @@
 These formulas have same input parameters `qformula`, `t_array`, `u0`, `tol`.
 + `qformula`: This is a structure with two fileds `alpha` and `w`, where `alpha`
   is(are) the fractional order, and `w` is(are) the weight of the fractional term.
-  It correspond to the term <img alt="$ w D^alpha $" src="svgs/479b913a7d9ea0a49e3a584063236da6.svg" align="middle" width="65.8885524pt" height="22.831056599999986pt"/> of the equation.
+  It corresponds to the term <img alt="$ w D^\alpha_t $" src="svgs/3f9faa76d988fc51a7c1cb332b7b841a.svg" align="middle" width="34.82299094999999pt" height="22.465723500000017pt"/> of the equation.
 + `t_array`: This is the temporal mesh <img alt="$(t_0, t_1, t_2, ..., t_N)$" src="svgs/12f4e4ef93be91774dee0fb3b3ceef7d.svg" align="middle" width="114.04346085pt" height="24.65753399999998pt"/>.
 + `u0`: This is the initial value, it can be any shape: scale or vector or matrix.
 + `tol`: This parameter only used in fast algorithms. It is used to limit the error 
-  of the SOE(sum of exponential function) approximation.
+  of the SOE(sum-of-exponentials) approximation.
   
-This is an example to solve the equation <img alt="$ D^alpha u = f$" src="svgs/7508c55b3d80f6c23000571b2f348c3f.svg" align="middle" width="94.82302664999999pt" height="22.831056599999986pt"/>, see file `example.m`. Also, you can find example in
+This is an example to solve the equation <img alt="$ D^\alpha_t u = f$" src="svgs/b4931da6a1d4f221e6fe3cc1d3afd857.svg" align="middle" width="64.57937639999999pt" height="22.831056599999986pt"/>, see file `example.m`. Also, you can find example in
 the fold `test`.
 ```  matlab
-% solve equation  D^alpha u = f
+% solve equation  D^\alpha_t u = f
 
 alpha = 0.8;
 c = 3;
