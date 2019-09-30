@@ -103,11 +103,11 @@ classdef Fast_L1_formula
             ret = obj.t(obj.n + 1);
         end
         
-        function ret = get_sigma(obj)
-            ret = 0;
+        function ret = get_ti(obj, i)
+            ret = obj.t(i + 1);
         end
-
-        function ret = get_sigma_same(obj)
+        
+        function ret = get_sigma(obj)
             ret = 0;
         end
         

@@ -92,12 +92,12 @@ classdef L1_2_formula_uniform
         function ret = get_tn(obj)
             ret = obj.n * obj.tau;
         end
+
+        function ret = get_ti(obj, i)
+            ret = obj.tau*i;
+        end
         
         function ret = get_sigma(obj)
-            ret = 0;
-        end
-
-        function ret = get_sigma_same(obj)
             ret = 0;
         end
         

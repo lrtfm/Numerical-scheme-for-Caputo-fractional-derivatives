@@ -89,14 +89,11 @@ classdef Fast_L2_1_sigma_uniform
             end
         end
         
+        % The sigma in the reference paper is used as $D^{\alpha} u^{n- (1 - \sigma)}$
+        % Here, we return the value (1- \sigma), which
+        % is used in Fast_L2_1_sigma_single_term, to get a uniform interface.
+        % So, the return value sigma is used as $D^{\alpha} u^{n - \sigma}$
         function sigma = get_sigma(obj)
-            sigma = obj.sigma;
-        end
-
-        % Here, the sigma is used as $D^{\alpha} u^{n+\sigma}$
-        % We add interface to change it to $D^{\alpha} u^{n-\sigma}$, which
-        % is used in Fast_L2_1_sigma_single_term.
-        function sigma = get_sigma_same(obj)
             sigma = 1 - obj.sigma;
         end
         
@@ -150,6 +147,10 @@ classdef Fast_L2_1_sigma_uniform
         
         function ret = get_tn(obj)
             ret = obj.tau*obj.n;
+        end
+
+        function ret = get_ti(obj, i)
+            ret = obj.tau*i;
         end
         
         function ret = get_history_array(obj, n)

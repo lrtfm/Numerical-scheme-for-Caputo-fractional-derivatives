@@ -120,13 +120,12 @@ classdef Fast_L2_1_sigma_single_term
             assert(obj.n == n);
             ret = obj.un_h;
         end
+
+        function ret = get_ti(obj, i)
+            ret = obj.t(i + 1);
+        end
         
         function ret = get_sigma(obj)
-            ret = obj.sigma;
-        end
-
-        % Add same interface with the Fast_L2_1_sigma_uniform.m
-        function ret = get_sigma_same(obj)   
             ret = obj.sigma;
         end
             

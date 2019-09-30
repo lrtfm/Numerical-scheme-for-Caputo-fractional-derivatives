@@ -94,15 +94,15 @@ classdef L2_1_sigma_single_term
                 (1-obj.sigma)*obj.t(obj.n+1);
         end
         
+        function ret = get_ti(obj, i)
+            ret = obj.t(i + 1);
+        end
+        
         function ret = get_tn(obj)
             ret = obj.t(obj.n+1);
         end
 
         function ret = get_sigma(obj)
-            ret = obj.sigma;
-        end
-
-        function ret = get_sigma_same(obj)
             ret = obj.sigma;
         end
         
