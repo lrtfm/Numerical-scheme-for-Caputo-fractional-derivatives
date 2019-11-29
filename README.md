@@ -22,7 +22,7 @@
     Ref: 
     + G. Gao et al., J. Comput. Phys., 259(2014) 33--50.
 
-4. L2-1-<img src="svgs/8cda31ed38c6d59d14ebefa440099572.svg?invert_in_darkmode" align=middle width=9.98290094999999pt height=14.15524440000002pt/> scheme
+4. L2-1-<img src="./svgs/8cda31ed38c6d59d14ebefa440099572.svg" align=middle width=9.98290094999999pt height=14.15524440000002pt/> scheme
 
     Reference: 
     + Anatoly A.Alikhanov. *A new difference scheme for the time fractional diffusion
@@ -34,7 +34,7 @@
     _SIAM Journal on Numerical Analysis_. 57 (2019) 218-237.
     _doi: 10.1137/16m1175742_
 
-5. Fast L2-1-<img src="svgs/8cda31ed38c6d59d14ebefa440099572.svg?invert_in_darkmode" align=middle width=9.98290094999999pt height=14.15524440000002pt/> scheme
+5. Fast L2-1-<img src="./svgs/8cda31ed38c6d59d14ebefa440099572.svg" align=middle width=9.98290094999999pt height=14.15524440000002pt/> scheme
 
     Reference:
     + Fast Evaluation of the Caputo Fractional Derivative and its Applications to Fractional 
@@ -48,8 +48,8 @@
 These formulas have same input parameters `qformula`, `t_array`, `u0`, `tol`.
 + `qformula`: This is a structure with two fileds `alpha` and `w`, where `alpha`
   is(are) the fractional order, and `w` is(are) the weight of the fractional term.
-  It corresponds to the term <img src="svgs/3f9faa76d988fc51a7c1cb332b7b841a.svg?invert_in_darkmode" align=middle width=34.82299094999999pt height=22.465723500000017pt/> of the equation.
-+ `t_array`: This is the temporal mesh <img src="svgs/12f4e4ef93be91774dee0fb3b3ceef7d.svg?invert_in_darkmode" align=middle width=114.04346085pt height=24.65753399999998pt/>.
+  It corresponds to the term <img src="./svgs/3f9faa76d988fc51a7c1cb332b7b841a.svg" align=middle width=34.82299094999999pt height=22.465723500000017pt/> of the equation.
++ `t_array`: This is the temporal mesh <img src="./svgs/12f4e4ef93be91774dee0fb3b3ceef7d.svg" align=middle width=114.04346085pt height=24.65753399999998pt/>.
 + `u0`: This is the initial value, it can be any shape: scale or vector or matrix.
 + `tol`: This parameter only used in fast algorithms. It is used to limit the error 
   of the SOE(sum-of-exponentials) approximation.
@@ -64,14 +64,14 @@ There are some functions of the formulas.
 + `get_wn`: the weight value of current step data. The product of the return value and the current data
     if the contribution of current step data for the fractional derivative, i.e. $D^\alpha_{t^{n-\sigma}} u = w u^n + u_{hist}$,
     where $w$ is the return value of `get_wn` and $u_{hist}$ is the second output of `update`.
-+ `get_sigma`: get the sigma value which can be used to obtain the approximation point  <img src="svgs/e4b4922007e8462a5e0e6b16f169c1e5.svg?invert_in_darkmode" align=middle width=32.36645114999999pt height=26.17730939999998pt/>.
++ `get_sigma`: get the sigma value which can be used to obtain the approximation point  <img src="./svgs/e4b4922007e8462a5e0e6b16f169c1e5.svg" align=middle width=32.36645114999999pt height=26.17730939999998pt/>.
     We can obtain it like this $t^{n-\sigma} = \sigma * t^(n-1) + (1 - \sigma) * t^n$;
 + `get_ti`: get the mesh value at step `i`;
 + `get_tn`: get the mesh value at current step.
-+ `get_t`: get the approximation point. As the formula approximate the value at <img src="svgs/46e8ac900863d40b0b44233229c9aaf0.svg?invert_in_darkmode" align=middle width=32.36645114999999pt height=26.17730939999998pt/>, it will
++ `get_t`: get the approximation point. As the formula approximate the value at <img src="./svgs/46e8ac900863d40b0b44233229c9aaf0.svg" align=middle width=32.36645114999999pt height=26.17730939999998pt/>, it will
     return the value of $t^{n - sigma}$.
 
-This is an example to solve the equation <img src="svgs/b4931da6a1d4f221e6fe3cc1d3afd857.svg?invert_in_darkmode" align=middle width=64.57937639999999pt height=22.831056599999986pt/>, see file `example.m`. 
+This is an example to solve the equation <img src="./svgs/b4931da6a1d4f221e6fe3cc1d3afd857.svg" align=middle width=64.57937639999999pt height=22.831056599999986pt/>, see file `example.m`. 
 ```  matlab
 % solve fractional ordinary differential equation  
 %                \[  D^alpha u = f  \]
